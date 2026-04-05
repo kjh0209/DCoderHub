@@ -39,7 +39,7 @@
 ### 설치
 
 ```bash
-git clone https://github.com/<your-username>/DCoderHub.git
+git clone https://github.com/kjh0209/DCoderHub.git
 cd DCoderHub/daker-hub
 npm install
 ```

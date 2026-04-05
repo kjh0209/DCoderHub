@@ -1,6 +1,6 @@
 import type { Hackathon, HackathonDetail, Team, LeaderboardData, RankingEntry } from "./types";
 
-export const DATA_VERSION = 7;
+export const DATA_VERSION = 8;
 
 export const SEED_HACKATHONS: Hackathon[] = [
   {

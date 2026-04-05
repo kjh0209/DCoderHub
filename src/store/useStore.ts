@@ -206,8 +206,12 @@ export const useStore = create<StoreState>()(
           (u) => u.email.toLowerCase() === email.toLowerCase()
         );
         if (existing) {
-          set({ currentUser: existing });
-          return existing;
+          const updated = { ...existing, name };
+          set((state) => ({
+            currentUser: updated,
+            users: state.users.map((u) => u.id === updated.id ? updated : u),
+          }));
+          return updated;
         }
         const user: User = {
           id: generateId(),

@@ -46,7 +46,10 @@ export function AuthModal({ open, onClose, onSuccess }: AuthModalProps) {
   function decodeGoogleJWT(credential: string) {
     const base64 = credential.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
     const padded = base64 + "=".repeat((4 - (base64.length % 4)) % 4);
-    return JSON.parse(atob(padded)) as { name?: string; email: string };
+    const json = decodeURIComponent(
+      atob(padded).split("").map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2)).join("")
+    );
+    return JSON.parse(json) as { name?: string; email: string };
   }
 
   const handleGoogleSuccess = (credential: string) => {
